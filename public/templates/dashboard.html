@@ -1,8 +1,43 @@
+<div class="form-group">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-4">Name :</div>
+                <div>
+                    <input type="text" placeholder="Enter Name.." ng-model="name">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-4">Beer Quantity :</div>
+                <div><input type="text" placeholder="Enter Beer Quantity.." ng-model="beer_qty"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-4">Bread Quantity :</div>
+                <div><input type="text" placeholder="Enter Bread Quantity.." ng-model="bread_qty"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-4">Wine Quantity :</div>
+                <div><input type="text" placeholder="Enter Wine Quantity.." ng-model="wine_qty"></div>
+            </div>
+        </div>
+    </div>
+   <label class="col-md-4 control-label" for="submit"></label>
+   <div class="col-md-4 center-block">
+      <button id="submit" name="submit" class="btn btn-primary center-block" ng-click="postGroceries(name, beer_qty, bread_qty, wine_qty)">
+          Submit
+       </button>
+    <div style="color:red; font-size:14px">
+        {{ errorStatus }}
+    </div>
+
+   </div>
+
+</div>
 <div class="row">
 	<div class="col-lg-12">
 		<rd-widget>
             <rd-widget-header icon="fa-tasks" title="Entities"></rd-widget-header>
-            <rd-widget-body classes="large no-padding">
+            <rd-widget-body classes="medium no-padding">
                 <div class="table-responsive">
                     <section class="">
                         <table>

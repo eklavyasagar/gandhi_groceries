@@ -4,8 +4,8 @@
 
 angular.module('gandhiGrocery')
     .controller('DashboardCtrl', [
-        '$scope', '$rootScope', '$cookieStore', 'dataFactory',
-        function ($scope, $rootScope, $cookieStore, dataFactory) {
+        '$scope', '$rootScope', '$cookieStore', 'dataFactory', '$filter',
+        function ($scope, $rootScope, $cookieStore, dataFactory, $filter) {
             var mobileView = 992;
 
             $scope.getWidth = function () {
@@ -34,14 +34,21 @@ angular.module('gandhiGrocery')
                 $cookieStore.put('toggle', $scope.toggle);
             };
 
-            function getGroceries () {
-                dataFactory.getGroceries()
+            $scope.postGroceries = function (name, beer, bread, wine) {
+                $scope.errorStatus = null;
+                var dataObj = {
+                    name: name,
+                    beer: beer,
+                    bread: bread,
+                    wine: wine
+                }
+                dataFactory.postGroceries(dataObj)
                 .then(function (response) {
-                    $scope.groceries = response.data.entities;
+                    var groceries = response.data.entities;
+                    $scope.groceries = $filter('filter')(groceries, { name: name, beer: beer, bread: bread, wine: wine });
                 }, function (error) {
-                    $scope.status = 'Unable to load api grocery data: ' + error.message;
+                    $scope.errorStatus = error.data.error_description;
                 })
             };
-            getGroceries();
         }
 ]);

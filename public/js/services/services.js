@@ -11,8 +11,8 @@ angular.module('gandhiGrocery')
     var urlBase = 'https://apibaas-trial.apigee.net/sdinoo/sandbox/mp_orders';
     var dataFactory = {};
 
-    dataFactory.getGroceries = function () {
-        return $http.get(urlBase);
+    dataFactory.postGroceries = function (dataObj) {
+        return $http.post(urlBase, dataObj);
     };
 
     return dataFactory;

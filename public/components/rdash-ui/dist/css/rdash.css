@@ -505,7 +505,7 @@ section.positioned {
 }
 .container {
   overflow-y: auto;
-  height: 200px;
+  height: 80px;
 }
 table {
   border-spacing: 0;

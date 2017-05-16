@@ -10,10 +10,6 @@ var app = express();
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/dashboard', function (req, res) {
-    dashboard.getList(req, res);
-});
-
 app.listen(3000, function () {
   console.log('app listening on port 3000!');
 });
