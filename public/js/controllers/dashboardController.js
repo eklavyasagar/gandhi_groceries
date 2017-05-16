@@ -34,7 +34,7 @@ angular.module('gandhiGrocery')
                 $cookieStore.put('toggle', $scope.toggle);
             };
 
-            $scope.postGroceries = function (name, beer, bread, wine) {
+            $scope.postGroceries = function (name, beer, bread, wine, authorization, apikey) {
                 $scope.errorStatus = null;
                 var dataObj = {
                     name: name,
@@ -42,12 +42,11 @@ angular.module('gandhiGrocery')
                     bread: bread,
                     wine: wine
                 }
-                dataFactory.postGroceries(dataObj)
+                dataFactory.postGroceries(dataObj, authorization, apikey)
                 .then(function (response) {
-                    var groceries = response.data.entities;
-                    $scope.groceries = $filter('filter')(groceries, { name: name, beer: beer, bread: bread, wine: wine });
+                    $scope.groceries = response.data.entities;
                 }, function (error) {
-                    $scope.errorStatus = error.data.error_description;
+                    $scope.errorStatus = 'failed to get the response';
                 })
             };
         }

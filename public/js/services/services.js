@@ -8,12 +8,16 @@
 angular.module('gandhiGrocery')
     .factory('dataFactory', ['$http', function($http) {
 
-    var urlBase = 'https://apibaas-trial.apigee.net/sdinoo/sandbox/mp_orders';
-    var dataFactory = {};
+    var urlBase = 'https://sdinoo-test.apigee.net/v1/orders',
+    	dataFactory = {};
 
-    dataFactory.postGroceries = function (dataObj) {
-        return $http.post(urlBase, dataObj);
+    dataFactory.postGroceries = function (dataObj, authorization, apikey) {
+    	var url = urlBase + '?apikey=' + apikey;
+    	// $http.defaults.headers.common.Authorization = 'Bearer ' + authorization;
+        return $http.post(url, dataObj,
+        				  { 
+        				  	headers:{ 'Authorization':  'Bearer ' + authorization }
+        				  });
     };
-
     return dataFactory;
 }]);
