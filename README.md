@@ -1,5 +1,5 @@
 # Gandhi Groceris
-Nodejs application to list all gandhi groceries through a simple Restful Webservice.
+Nodejs application to list all customer groceries through a simple Restful Webservice.
 
 ### Prerequisites
     1. Nodejs >= 6.x.x
